@@ -1,0 +1,31 @@
+*** Settings ***
+Library    Selenium2Library
+Library    BuiltIn
+Library    String
+Test Teardown  Close Browser
+
+
+*** Variable ***
+${url_facebook}        https://www.facebook.com
+${title_facebook}      Facebook - เข้าสู่ระบบหรือสมัครใช้งาน
+
+
+*** Keywords ***
+Verify facebook page
+    [Arguments]           ${title}
+    Title Should Be       ${title}
+
+*** Test Cases ***
+
+Login facebook
+    [tags]    success
+    Open Browser    about:blank    chrome
+    Maximize Browser Window
+    Go To                          ${url_facebook}
+    Verify facebook page           ${title_facebook}
+    Capture Page Screenshot
+
+    
+
+
+
